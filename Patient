@@ -1,1 +1,41 @@
+import java.util.Scanner;
 
+public class Patient {
+    int patientID;
+    String name;
+    int age;
+    String contactInfo;
+    String medicalHistory;
+    String visitRecords;
+
+    public Patient(int patientID, String name, int age, String contactInfo, String medicalHistory, String visitRecords) {
+        this.patientID = patientID;
+        this.name = name;
+        this.age = age;
+        this.contactInfo = contactInfo;
+        this.medicalHistory = medicalHistory;
+        this.visitRecords = visitRecords;
+    }
+
+    public void GetPatientInfo() {
+        System.out.println("patient ID:" + patientID + "\n"+ "Name: " + name +"\n"+ " Age: " + age+"\n" + " Contact: " + contactInfo+"\n" + " Medical History: " + medicalHistory+"\n" + " VisitRecords: " + visitRecords);
+    }
+
+    public void UpdatePatientInfo(String newName, int newAge, String newContactInfo, String newMedicalHistory, String newVisitRecords) {
+        name = newName;
+        age = newAge;
+        contactInfo = newContactInfo;
+        medicalHistory = newMedicalHistory;
+        visitRecords = newVisitRecords;
+        System.out.println("Name:" + newName+"\n" + " Age: " + newAge+"\n" + " Contact: " + newContactInfo+"\n" + " Medical History: " + newMedicalHistory+"\n" + " VisitRecords: " + newVisitRecords);
+        System.out.println("Patient info updated successfully");
+    }
+
+    public void AddVisitRecord() {
+        Scanner console = new Scanner(System.in);
+        System.out.println("Add visit Date");
+        String visitDate = console.next();
+        System.out.println("Add visit Details");
+        String visitDetails = console.next();
+    }
+}
