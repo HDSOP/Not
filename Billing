@@ -1,1 +1,42 @@
+import java.util.Date;
+import java.util.ArrayList;
+import java.util.*;
+public class Biliing {
+    private String PatientID;
+    private double BillingAmount;
+    private String date;
+    private ArrayList<String> PaymentHistory = new ArrayList<String>();
 
+    public Biliing(String date, double BillingAmount, String patientID, ArrayList<String> PaymentHistory) {
+        this.date = date;
+        this.BillingAmount = BillingAmount;
+       this.PatientID = patientID;
+        this.PaymentHistory = new ArrayList<>();
+    }
+
+    public void generatebill() {
+        System.out.println("Generating bill for Patient: " + PatientID);
+        System.out.println("Payment made on: " + date);
+        System.out.println("Total Billing Amount: " + BillingAmount);
+    }
+
+    public void addPayment(double amount) {
+        if (amount > BillingAmount) {
+            System.out.println("Payment exceeds the Billing Amount please increase the Billing Amount");
+        } else {
+            BillingAmount -= amount;
+            PaymentHistory.add("Payment made on " + date + " amount: " + amount);
+            System.out.println("Payment successful. Remaining balance: " + BillingAmount);
+        }
+    }
+
+    public void getPaymentStatus() {
+        System.out.println("Payment Status for Patient " + PatientID);
+        System.out.println("Payment made on " + date);
+        System.out.println("Total Billing Amount: " + BillingAmount);
+        System.out.println("Payment History: ");
+        for (String payment : PaymentHistory) {
+            System.out.println(payment);
+        }
+    }
+}
