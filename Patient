@@ -1,41 +1,61 @@
-import java.util.Scanner;
-
+import java.util.ArrayList;
+import java.util.*;
 public class Patient {
-    int patientID;
-    String name;
-    int age;
-    String contactInfo;
-    String medicalHistory;
-    String visitRecords;
-
-    public Patient(int patientID, String name, int age, String contactInfo, String medicalHistory, String visitRecords) {
-        this.patientID = patientID;
+    Scanner console=new Scanner(System.in);
+    private int id;
+    private String name;
+    private int age;
+    private String ContactInfo;
+    private ArrayList<String> MedicalHistory=new ArrayList<String>();
+    private ArrayList<String> VisitRecords=new ArrayList<String>();
+    public Patient(int id, String name, int age, String contactInfo) {
+        this.id = id;
         this.name = name;
         this.age = age;
-        this.contactInfo = contactInfo;
-        this.medicalHistory = medicalHistory;
-        this.visitRecords = visitRecords;
+        ContactInfo = contactInfo;
     }
-
-    public void GetPatientInfo() {
-        System.out.println("patient ID:" + patientID + "\n"+ "Name: " + name +"\n"+ " Age: " + age+"\n" + " Contact: " + contactInfo+"\n" + " Medical History: " + medicalHistory+"\n" + " VisitRecords: " + visitRecords);
+    public void UpdateContactInfo(){
+        System.out.println("enter new number");
+        String newnum=console.next();
+        ContactInfo=newnum;
     }
-
-    public void UpdatePatientInfo(String newName, int newAge, String newContactInfo, String newMedicalHistory, String newVisitRecords) {
-        name = newName;
-        age = newAge;
-        contactInfo = newContactInfo;
-        medicalHistory = newMedicalHistory;
-        visitRecords = newVisitRecords;
-        System.out.println("Name:" + newName+"\n" + " Age: " + newAge+"\n" + " Contact: " + newContactInfo+"\n" + " Medical History: " + newMedicalHistory+"\n" + " VisitRecords: " + newVisitRecords);
-        System.out.println("Patient info updated successfully");
+    public void AddVisitRecords(){
+        System.out.println("enter visit date");
+        String date = console.next();
+        VisitRecords.add(date);
+        System.out.println("add disease");
+        String disease = console.next();
+        UpdateMedicalHistory(disease);
     }
-
-    public void AddVisitRecord() {
-        Scanner console = new Scanner(System.in);
-        System.out.println("Add visit Date");
-        String visitDate = console.next();
-        System.out.println("Add visit Details");
-        String visitDetails = console.next();
+    public void UpdateMedicalHistory(String disease){
+        MedicalHistory.add(disease);
+    }
+    public int getId() {
+        return id;
+    }
+    public String getName() {
+        return name;
+    }
+    public int getAge() {
+        return age;
+    }
+    public String getContactInfo() {
+        return ContactInfo;
+    }
+    public ArrayList getMedicalHistory() {
+        return MedicalHistory;
+    }
+    public ArrayList getVisitRecords() {
+        return VisitRecords;
+    }
+    public void GetPatientInfo(){
+        //get it by id from database//
+        System.out.println("Patient ID: " + id);
+        System.out.println("Name: " + name);
+        System.out.println("Age: " + age);
+        System.out.println("Contact Information: " + ContactInfo);
+        System.out.println("Medical History: " + MedicalHistory);
+        System.out.println("Visit Records: " + VisitRecords);
     }
 }
+
