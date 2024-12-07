@@ -1,5 +1,5 @@
 -- Create the patients table
-CREATE TABLE IF NOT EXISTS patients (
+CREATE TABLE patients (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT NOT NULL,
     age INTEGER NOT NULL,
