@@ -1,3 +1,5 @@
+package com.example;
+
 import java.util.ArrayList;
 import java.util.*;
 public class Patient {
@@ -6,9 +8,9 @@ public class Patient {
     private String name;
     private int age;
     private String ContactInfo;
-    private ArrayList<String> MedicalHistory=new ArrayList<String>();
-    private ArrayList<String> VisitRecords=new ArrayList<String>();
-    public Patient(int id, String name, int age, String contactInfo) {
+    private String MedicalHistory;
+    private ArrayList VisitRecords=new ArrayList();//change to linkedlist//
+    public Patient(int id, String name, int age, String contactInfo,String MedicalHistory) {
         this.id = id;
         this.name = name;
         this.age = age;
@@ -23,12 +25,6 @@ public class Patient {
         System.out.println("enter visit date");
         String date = console.next();
         VisitRecords.add(date);
-        System.out.println("add disease");
-        String disease = console.next();
-        UpdateMedicalHistory(disease);
-    }
-    public void UpdateMedicalHistory(String disease){
-        MedicalHistory.add(disease);
     }
     public int getId() {
         return id;
@@ -41,9 +37,6 @@ public class Patient {
     }
     public String getContactInfo() {
         return ContactInfo;
-    }
-    public ArrayList getMedicalHistory() {
-        return MedicalHistory;
     }
     public ArrayList getVisitRecords() {
         return VisitRecords;
@@ -58,4 +51,3 @@ public class Patient {
         System.out.println("Visit Records: " + VisitRecords);
     }
 }
-
