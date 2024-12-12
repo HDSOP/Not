@@ -1,1 +1,73 @@
+import java.util.Arrays;
 
+public class ReportGenerator {
+    private String reportType;
+    private int[] data;
+
+
+    public ReportGenerator(String reportType, int[] data) {
+        this.reportType = reportType;
+        this.data = data;
+    }
+
+    static int partition(int[] array, int begin, int end) {
+        int pivot = end;
+
+        int counter = begin;
+        for (int i = begin; i < end; i++) {
+            if (array[i] < array[pivot]) {
+                int temp = array[counter];
+                array[counter] = array[i];
+                array[i] = temp;
+                counter++;
+            }
+
+        }
+
+        int temp = array[pivot];
+        array[pivot] = array[counter];
+        array[counter] = temp;
+        return counter;
+    }
+
+    public static void quickSort(int[] array, int begin, int end) {
+        if (end <= begin) return;
+
+        int pivot = partition(array, begin, end);
+        quickSort(array, begin, pivot - 1);
+        quickSort(array, pivot + 1, end);
+
+    }
+
+
+    public String generatePatientReport() {
+        if (reportType.equalsIgnoreCase("Patient")) {
+            quickSort(data, 0, data.length - 1);
+            return "Patient Visit History : " + Arrays.toString(data);
+        } else {
+            return "Error";
+        }
+    }
+
+
+    public String generateAppointmentReport() {
+        if (reportType.equalsIgnoreCase("Appointment")) {
+            quickSort(data, 0, data.length - 1);
+            return "Appointment Statistics " + Arrays.toString(data);
+        } else {
+            return "Error";
+        }
+    }
+
+    public String generateRevenueReport() {
+        if (reportType.equalsIgnoreCase("Revenue")) {
+            quickSort(data, 0, data.length - 1);
+            return "Revenue Summary  " + Arrays.toString(data);
+        } else {
+            return "Error";
+        }
+
+
+    }
+
+}
