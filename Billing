@@ -4,14 +4,14 @@ import java.util.*;
 public class Biliing {
     private String PatientID;
     private double BillingAmount;
-    private String date;
+    private Date date;
     private ArrayList<String> PaymentHistory = new ArrayList<String>();
 
-    public Biliing(String date, double BillingAmount, String patientID, ArrayList<String> PaymentHistory) {
-        this.date = date;
+    public Biliing(Date date, double BillingAmount, String patientID, ArrayList<String> PaymentHistory) {
+       this.date=date;
         this.BillingAmount = BillingAmount;
        this.PatientID = patientID;
-        this.PaymentHistory = new ArrayList<>();
+        this.PaymentHistory = PaymentHistory;
     }
 
     public void generatebill() {
@@ -21,11 +21,15 @@ public class Biliing {
     }
 
     public void addPayment(double amount) {
-        if (amount > BillingAmount) {
-            System.out.println("Payment exceeds the Billing Amount please increase the Billing Amount");
+        Date paymentDate = new Date();
+        if (amount < 0) {
+            System.out.println("Payment amount is not valid");
+        }
+        else if (amount > BillingAmount) {
+            System.out.println("Payment exceeds the Billing Amount. Please increase the Billing Amount.");
         } else {
             BillingAmount -= amount;
-            PaymentHistory.add("Payment made on " + date + " amount: " + amount);
+            PaymentHistory.add("Payment made on " + paymentDate.toString() + " amount: " + amount);
             System.out.println("Payment successful. Remaining balance: " + BillingAmount);
         }
     }
